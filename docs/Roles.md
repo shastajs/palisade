@@ -1,6 +1,6 @@
 # User Roles
 
-User roles come from:
+[`Model.authorized()`](docs/Authorized.md), [`Model.screen()`](docs/Screen.md), and [`.screenDeep()`](docs/ScreenDeep.md) take a user object as an argument and use this system for getting the roles off of it:
 
 - `public` (always exists)
 - `loggedIn` (if a user object was provided)
@@ -8,7 +8,7 @@ User roles come from:
 - `{user.role}` (if user accessing data has a `role` string)
 - `{user.roles}` (if user accessing data has a `roles` array of strings)
 
-Roles may be named whatever you like, but I typically use:
+Your roles can be named whatever you like, but I typically use:
 
 - `public` (provided by palisade)
 - `self` (provided by palisade)

@@ -13,11 +13,12 @@ npm install palisade --save
 
 ## API
 
-- [Introduction](docs/Introduction.md)
-- [Rules](docs/Rules.md)
-- [Roles](docs/Roles.md)
-- [Model.screen()](docs/Screen.md)
-- [screenDeep()](docs/ScreenDeep.md)
+- [Introduction](https://shastajs.github.io/palisade/)
+- [Rules](http://shasta.tools/palisade/docs/Rules.html)
+- [Roles](http://shasta.tools/palisade/docs/Roles.html)
+- [Model.authorized()](http://shasta.tools/palisade/docs/Authorized.html)
+- [Model.screen()](http://shasta.tools/palisade/docs/Screen.html)
+- [screenDeep()](http://shasta.tools/palisade/docs/ScreenDeep.html)
 
 ## Example
 

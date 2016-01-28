@@ -63,6 +63,8 @@ var userSchema = {
 };
 ```
 
+If you don't define a category or a rule for a field or type, the default is to deny access.
+
 ## Plugging it in
 
 To add the security functionality to a [Thinky](http://thinky.io) model, pass the palisade function the model and your security schema.
