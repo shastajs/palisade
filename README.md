@@ -1,3 +1,5 @@
+<img src='https://i.imgur.com/OyHH6gh.png' align='center'/>
+
 # palisade [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
 
