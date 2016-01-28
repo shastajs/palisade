@@ -21,14 +21,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.screenDeep = _screenDeep3.default;
 
-// Model.screen(user, type, data)
-// - user = requesting users object, optional
-// - type = type of access, possibles: read, write
-// - data = data to be sanitized, can be an object or array
-// if data is not an object or array, return it
-// if rules[type] is not defined, return null
-// return object where all fields the user doesnt have access to are removed
-
 exports.default = function (Model, rules) {
   Model.security = rules;
   Model.defineStatic('authorized', _isAuthorized2.default.bind(null, Model.security));

@@ -42,7 +42,7 @@ var screenDeep = function screenDeep(user, data, returnEmpty) {
     if (typeof nv !== 'undefined') p[k] = nv;
     return p;
   }, {});
-}; /*eslint no-console: 0*/
+};
 
 exports.default = screenDeep;
 module.exports = exports['default'];

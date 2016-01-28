@@ -1,4 +1,3 @@
-/*eslint no-console: 0*/
 import reduce from 'lodash.reduce'
 
 const screenDeep = (user, data, returnEmpty) => {
