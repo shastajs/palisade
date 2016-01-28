@@ -1,6 +1,8 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 // user roles come from:
 // - 'public' (always)
 // - 'loggedIn' (if user object exists)

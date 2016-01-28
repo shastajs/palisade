@@ -1,20 +1,25 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.screenDeep = undefined;
 
-var _objectLens = require('object-lens');
+var _screen = require('./screen');
 
-var _objectLens2 = _interopRequireDefault(_objectLens);
+var _screen2 = _interopRequireDefault(_screen);
 
-var _lodash = require('lodash.map');
+var _isAuthorized = require('./isAuthorized');
 
-var _lodash2 = _interopRequireDefault(_lodash);
+var _isAuthorized2 = _interopRequireDefault(_isAuthorized);
 
-var _lodash3 = require('lodash.mapvalues');
+var _screenDeep2 = require('./screenDeep');
 
-var _lodash4 = _interopRequireDefault(_lodash3);
+var _screenDeep3 = _interopRequireDefault(_screenDeep2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.screenDeep = _screenDeep3.default;
 
 // Security Schema:
 // All values should be an array of roles
@@ -39,22 +44,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function (Model, rules) {
   Model.security = rules;
-  Model.defineStatic('authorized', isAuthorized.bind(null, Model.security));
-  Model.define('authorized', Model.authorized);
-  Model.defineStatic('screen', function (user, type, data) {
-    if (data == null) return data;
-    if (!rules[type]) return null;
-
-    if (Array.isArray(data)) {
-      return (0, _lodash2.default)(data, Model.lens.bind(null, user, type));
-    }
-    var roles = getRoles(user, data);
-    return (0, _objectLens2.default)(rules[type], roles, data);
+  Model.defineStatic('authorized', _isAuthorized2.default.bind(null, Model.security));
+  Model.define('authorized', function (type, user) {
+    return Model.authorized(type, user, this);
   });
-  Model.define('screen', function (user, type) {
-    return Model.lens(user, type, this);
+  Model.defineStatic('screen', _screen2.default.bind(null, Model.security));
+  Model.define('screen', function (type, user) {
+    return Model.screen(type, user, this);
   });
   return Model;
 };
-
-module.exports = exports['default'];

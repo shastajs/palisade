@@ -1,6 +1,8 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _lodash = require('lodash.intersection');
 
@@ -20,9 +22,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // if rules.document[type] does not include any of the users roles, return false
 // if rules.document[type] includes at least one of the users roles, return true
 
-exports.default = function (rules, user, type) {
+exports.default = function (rules, type, user, data) {
+  if (!type) throw new Error('Missing operation type');
   if (!rules.document || !rules.document[type]) return false;
-  return (0, _lodash2.default)((0, _getRoles2.default)(user), rules.document[type]).length !== 0;
+  return (0, _lodash2.default)((0, _getRoles2.default)(user, data), rules.document[type]).length !== 0;
 };
 
 module.exports = exports['default'];

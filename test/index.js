@@ -1,4 +1,5 @@
 /*global it: true, describe: true */
+/*eslint no-console: 0*/
 import should from 'should'
 import palisade, { screenDeep } from '../src'
 import createModel from './fixtures/createModel'
@@ -265,5 +266,74 @@ describe('Model.screen', () => {
     let u1 = new User(o)
     User.screen('read', u1, u1).should.eql(o)
     u1.screen('read', u1).should.eql(o)
+  })
+  it('should return nested data if user roles attr matches', () => {
+    let rules = {
+      read: {
+        attributes: {
+          name: [ 'admin', 'super' ]
+        }
+      }
+    }
+    let User = createUser()
+    let u1 = { roles: [ 'admin', 'pleb' ] }
+    let o = { attributes: { name: 'test' } }
+    palisade(User, rules)
+    User.screen('read', u1, o).should.eql(o)
+  })
+  it('should return empty nested data if user roles attr doesnt match', () => {
+    let rules = {
+      read: {
+        attributes: {
+          name: [ 'root', 'super' ]
+        }
+      }
+    }
+    let User = createUser()
+    let u1 = { roles: [ 'admin', 'pleb' ] }
+    let o = { attributes: { name: 'test' } }
+    palisade(User, rules)
+    User.screen('read', u1, o).should.eql({ attributes: {} })
+  })
+})
+
+describe('screenDeep', () => {
+  it('should return an empty array when no read specified', () => {
+    let User = createUser()
+    palisade(User, {
+      read: {
+        id: [ 'public' ],
+        name: [ 'self' ]
+      }
+    })
+    let u1 = new User({
+      id: 123,
+      name: 'test1'
+    })
+    let u2 = new User({
+      id: 456,
+      name: 'test2'
+    })
+    let data = [ u1, u2 ]
+    screenDeep(null, data).should.eql([])
+  })
+  it('should return an empty nested array when no read specified', () => {
+    let User = createUser()
+    palisade(User, {
+      read: {
+        id: [ 'public' ],
+        name: [ 'self' ]
+      }
+    })
+    let u1 = new User({
+      id: 123,
+      name: 'test1'
+    })
+    let u2 = new User({
+      id: 456,
+      name: 'test2'
+    })
+    let data = [ [ u1, u2 ] ]
+    screenDeep(null, data).should.eql([ [ ] ])
   })
 })
