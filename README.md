@@ -6,6 +6,15 @@
 ```
 npm install palisade --save
 ```
+
+## API
+
+- [Introduction](docs/Introduction.md)
+- [Rules](docs/Rules.md)
+- [Roles](docs/Roles.md)
+- [Model.screen()](docs/Screen.md)
+- [screenDeep()](docs/ScreenDeep.md)
+
 ## Example
 
 ### ES6
@@ -13,7 +22,7 @@ npm install palisade --save
 ```js
 // your thinky connection instance
 import db from 'connections/thinky'
-import palisade from 'palisade'
+import palisade, { screenDeep } from 'palisade'
 
 const User = db.createModel('User', {
   id: String,
@@ -39,13 +48,17 @@ palisade(User, {
     id: ['public'],
     name: ['public'],
     birthday: ['admin', 'self'],
-    times: ['admin']
+    times: {
+      created: ['admin']
+    }
   },
   write: {
     id: ['admin'],
     name: ['admin'],
     birthday: ['admin', 'self'],
-    times: ['admin']
+    times: {
+      created: ['admin']
+    }
   }
 })
 ```
