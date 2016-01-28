@@ -1,4 +1,6 @@
-<img src='https://i.imgur.com/ksLTGTi.png' align='center'/>
+<p align='center'>
+  <img src='https://i.imgur.com/ksLTGTi.png'/>
+</p>
 
 # palisade [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
