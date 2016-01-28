@@ -1,6 +1,6 @@
 {
   "name": "palisade",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Role-based security, authorization, and filtering utilities for thinky and RethinkDB",
   "main": "dist/index.js",
   "keywords": [
