@@ -4,14 +4,15 @@ Palisade has three categories of security rules:
 
 ### `document`
 
-  - Each key is an operation type (for example: read, create, delete, update) that can be performed at a document level
-  - You may specify any number of operation types named whatever you like, but I always use these ones as they correspond to standard REST actions:
-    - `list` - Can they query for more than one document
-    - `read` - Can they read a single document
-    - `create` - Can they create a new document
-    - `update` - Can they update fields on an existing document
-    - `replace` - Can they completely replace an existing document
-    - `delete` - Can they delete an existing document
+  - Each key is an operation type (for example: list, read, create, delete, update) that can be performed at a document level
+  - You may specify any number of operation types named however you like
+    - Personally, I always use these ones as they translate well to REST endpoints:
+      - `list` - Can they query for more than one document
+      - `read` - Can they read a single document
+      - `create` - Can they create a new document
+      - `update` - Can they update fields on an existing document
+      - `replace` - Can they completely replace an existing document
+      - `delete` - Can they delete an existing document
 
 ### `read`
 
