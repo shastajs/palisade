@@ -1,5 +1,5 @@
+/*eslint no-console: 0*/
 import reduce from 'lodash.reduce'
-import mapValues from 'lodash.mapvalues'
 
 const screenDeep = (user, data, returnEmpty) => {
   if (typeof data !== 'object') return data
@@ -15,16 +15,21 @@ const screenDeep = (user, data, returnEmpty) => {
     return data.screen('read', user)
   }
 
-  // array of instances w/ lens
+  // array of data
   if (Array.isArray(data)) {
     return reduce(data, (p, v) => {
       let nv = screenDeep(user, v, true)
-      if (nv != null) p.push(nv)
+      if (typeof nv !== 'undefined') p.push(nv)
       return p
     }, [])
   }
 
-  return mapValues(data, (v) => screenDeep(user, v, true))
+  // object with values as data
+  return reduce(data, (p, v, k) => {
+    let nv = screenDeep(user, v, true)
+    if (typeof nv !== 'undefined') p[k] = nv
+    return p
+  }, {})
 }
 
 export default screenDeep

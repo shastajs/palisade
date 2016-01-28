@@ -138,7 +138,7 @@ describe('Model.authorized', () => {
     }
     let User = createUser()
     palisade(User, rules)
-    let u1 = new User({ id: 123 })
+    let u1 = new User({ id: '123' })
     User.authorized('read', u1, u1).should.equal(true)
     u1.authorized('read', u1).should.equal(true)
   })
@@ -261,7 +261,7 @@ describe('Model.screen', () => {
       }
     }
     let User = createUser()
-    let o = { id: 123, name: 'test' }
+    let o = { id: '123', name: 'test' }
     palisade(User, rules)
     let u1 = new User(o)
     User.screen('read', u1, u1).should.eql(o)
@@ -300,18 +300,13 @@ describe('Model.screen', () => {
 describe('screenDeep', () => {
   it('should return an empty array when no read specified', () => {
     let User = createUser()
-    palisade(User, {
-      read: {
-        id: [ 'public' ],
-        name: [ 'self' ]
-      }
-    })
+    palisade(User, {})
     let u1 = new User({
-      id: 123,
+      id: '123',
       name: 'test1'
     })
     let u2 = new User({
-      id: 456,
+      id: '456',
       name: 'test2'
     })
     let data = [ u1, u2 ]
@@ -319,21 +314,65 @@ describe('screenDeep', () => {
   })
   it('should return an empty nested array when no read specified', () => {
     let User = createUser()
+    palisade(User, {})
+    let u1 = new User({
+      id: '123',
+      name: 'test1'
+    })
+    let u2 = new User({
+      id: '456',
+      name: 'test2'
+    })
+    let data = [ [ u1, u2 ] ]
+    screenDeep(null, data).should.eql([ [ ] ])
+  })
+  it('should return an empty object when no read specified', () => {
+    let User = createUser()
+    palisade(User, {})
+    let u1 = new User({
+      id: '123',
+      name: 'test1'
+    })
+    let u2 = new User({
+      id: '456',
+      name: 'test2'
+    })
+    let data = { a: u1, b: u2 }
+    screenDeep(null, data).should.eql({})
+  })
+  it('should return an empty nested object when no read specified', () => {
+    let User = createUser()
+    palisade(User, {})
+    let u1 = new User({
+      id: '123',
+      name: 'test1'
+    })
+    let u2 = new User({
+      id: '456',
+      name: 'test2'
+    })
+    let data = { c: { a: u1, b: u2 } }
+    screenDeep(null, data).should.eql({ c: {} })
+  })
+  it('should return data when read public specified', () => {
+    let User = createUser()
     palisade(User, {
+      document: {
+        read: [ 'public' ]
+      },
       read: {
         id: [ 'public' ],
         name: [ 'self' ]
       }
     })
     let u1 = new User({
-      id: 123,
+      id: '123',
       name: 'test1'
     })
     let u2 = new User({
-      id: 456,
+      id: '456',
       name: 'test2'
     })
-    let data = [ [ u1, u2 ] ]
-    screenDeep(null, data).should.eql([ [ ] ])
+    screenDeep(u1, u2).should.eql({ id: '456' })
   })
 })
