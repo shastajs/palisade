@@ -2,9 +2,6 @@
   <img src='https://i.imgur.com/ksLTGTi.png'/>
 </p>
 
-# palisade [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url]
-
-
 ## Install
 
 ```
@@ -13,7 +10,6 @@ npm install palisade --save
 
 ## API
 
-- [Introduction](https://shastajs.github.io/palisade/)
 - [Rules](http://shasta.tools/palisade/docs/Rules.html)
 - [Roles](http://shasta.tools/palisade/docs/Roles.html)
 - [Model.authorized()](http://shasta.tools/palisade/docs/Authorized.html)
@@ -114,11 +110,3 @@ palisade(User, {
   }
 });
 ```
-
-
-[downloads-image]: http://img.shields.io/npm/dm/palisade.svg
-[npm-url]: https://npmjs.org/package/palisade
-[npm-image]: http://img.shields.io/npm/v/palisade.svg
-
-[travis-url]: https://travis-ci.org/shastajs/palisade
-[travis-image]: https://travis-ci.org/shastajs/palisade.png?branch=master
