@@ -1,5 +1,5 @@
 <p align='center'>
-  <img src='https://cloud.githubusercontent.com/assets/425716/12656327/86aafe0c-c5b2-11e5-8de8-b6a7f0552397.png' width='600'/>
+  <img src='https://cloud.githubusercontent.com/assets/425716/12656327/86aafe0c-c5b2-11e5-8de8-b6a7f0552397.png' width='400'/>
   <p align='center'>Role-based security, authorization, and filtering utilities for Thinky/RethinkDB</p>
 </p>
 
@@ -11,7 +11,7 @@ One command and you're ready to secure your data:
 npm install palisade --save
 ```
 
-:boom: Now, check out the [documentation](http://shasta.tools/palisade) to get started!
+**Now**, check out the [documentation](http://shasta.tools/palisade/docs/Rules.html) to get started!
 
 ## Example
 

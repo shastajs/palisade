@@ -5,3 +5,4 @@
 - [Model.authorized()](docs/Authorized.md)
 - [Model.screen()](docs/Screen.md)
 - [screenDeep()](docs/ScreenDeep.md)
+- [API Endpoint](docs/Endpoint.md)

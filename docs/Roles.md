@@ -20,5 +20,5 @@ Your can name your roles however you like, but I typically use:
 - `public` (provided by palisade)
 - `self` (provided by palisade)
 - `loggedIn` (provided by palisade)
-- `admin` (for people responsible for moderating or performing maintenance)
+- `admin` (people responsible for moderating or performing maintenance)
 - `root` (you, the engineer)
