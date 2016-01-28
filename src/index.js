@@ -1,20 +1,7 @@
 import screen from './screen'
 import isAuthorized from './isAuthorized'
 
-// Security Schema:
-// All values should be an array of roles
-// - document
-//   - read
-//   - create
-//   - update
-//   - replace
-//   - delete
-// - read
-//   - $fieldName
-// - write
-//   - $fieldName
-
-// Model.lens(user, type, data)
+// Model.screen(user, type, data)
 // - user = requesting users object, optional
 // - type = type of access, possibles: read, write
 // - data = data to be sanitized, can be an object or array

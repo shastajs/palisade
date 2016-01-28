@@ -63,6 +63,54 @@ palisade(User, {
 })
 ```
 
+### ES5
+
+```js
+// your thinky connection instance
+var db = require('connections/thinky');
+var palisade = require('palisade');
+var screenDeep = palisade.screenDeep;
+
+var User = db.createModel('User', {
+  id: String,
+  name: String,
+  birthday: Date,
+  times: {
+    created: Date
+  }
+});
+
+// Anyone can list and read users and their public fields (id and name)
+// Users can update themselves, but only their own birthday
+// Admins can create, update, replace, or delete any user
+palisade(User, {
+  document: {
+    read: ['public'],
+    create: ['admin'],
+    update: ['admin', 'self'],
+    replace: ['admin'],
+    delete: ['admin']
+  },
+  read: {
+    id: ['public'],
+    name: ['public'],
+    birthday: ['admin', 'self'],
+    times: {
+      created: ['admin']
+    }
+  },
+  write: {
+    id: ['admin'],
+    name: ['admin'],
+    birthday: ['admin', 'self'],
+    times: {
+      created: ['admin']
+    }
+  }
+});
+```
+
+
 [downloads-image]: http://img.shields.io/npm/dm/palisade.svg
 [npm-url]: https://npmjs.org/package/palisade
 [npm-image]: http://img.shields.io/npm/v/palisade.svg
