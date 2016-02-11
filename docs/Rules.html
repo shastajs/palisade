@@ -1,0 +1,411 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>ACL Rules | Install</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.4.3">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-edit-link/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-prism/prism.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../docs/Roles.html" />
+    
+    
+    <link rel="prev" href="../index.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="1" data-basepath=".." data-revision="Wed Feb 10 2016 23:18:48 GMT-0800 (PST)">
+    
+
+<div class="book-summary">
+    <div class="book-search" role="search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1" data-path="docs/Rules.html">
+            
+                
+                    <a href="../docs/Rules.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        ACL Rules
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="docs/Roles.html">
+            
+                
+                    <a href="../docs/Roles.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        User Roles
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="docs/Authorized.html">
+            
+                
+                    <a href="../docs/Authorized.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Model.authorized()
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="docs/Screen.html">
+            
+                
+                    <a href="../docs/Screen.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Model.screen()
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="docs/ScreenDeep.html">
+            
+                
+                    <a href="../docs/ScreenDeep.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        screenDeep()
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="docs/Endpoint.html">
+            
+                
+                    <a href="../docs/Endpoint.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        API Endpoint
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Install</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <a id="edit-link" href="https://github.com/shastajs/palisade/tree/master/docs/Rules.md" class="btn fa fa-edit pull-left">&#xA0;&#xA0;Edit This Page</a><h1 id="acl-rules"><a name="acl-rules" class="plugin-anchor" href="#acl-rules"><span class="fa fa-link"></span></a>ACL Rules</h1>
+<p>Palisade has three categories of security rules:</p>
+<h3 id="-document"><a name="-document" class="plugin-anchor" href="#-document"><span class="fa fa-link"></span></a><code>document</code></h3>
+<ul>
+<li>Each key is an operation type (for example: list, read, create, delete, update) that can be performed at a document level</li>
+<li>You may specify any number of operation types named however you like<ul>
+<li>Personally, I always use these ones as they translate well to REST endpoints:<ul>
+<li><code>list</code> - Can they query for more than one document</li>
+<li><code>read</code> - Can they read a single document</li>
+<li><code>create</code> - Can they create a new document</li>
+<li><code>update</code> - Can they update fields on an existing document</li>
+<li><code>replace</code> - Can they completely replace an existing document</li>
+<li><code>delete</code> - Can they delete an existing document</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="-read"><a name="-read" class="plugin-anchor" href="#-read"><span class="fa fa-link"></span></a><code>read</code></h3>
+<ul>
+<li>Each key is a field name that corresponds to your schema</li>
+<li>The value is an array of roles that can update the field</li>
+<li>The value can also be an object with more fields inside of it for nested data</li>
+</ul>
+<h3 id="-write"><a name="-write" class="plugin-anchor" href="#-write"><span class="fa fa-link"></span></a><code>write</code></h3>
+<ul>
+<li>Each key is a field name that corresponds to your schema</li>
+<li>The value is an array of roles that can update the field</li>
+<li>The value can also be an object with more fields inside of it for nested data</li>
+</ul>
+<h2 id="example-schema"><a name="example-schema" class="plugin-anchor" href="#example-schema"><span class="fa fa-link"></span></a>Example Schema</h2>
+<p>In this example ruleset:</p>
+<ul>
+<li>Anyone can list users</li>
+<li>Anyone can read a single user</li>
+<li>Anyone read a user&apos;s public fields <code>id</code> and <code>name</code></li>
+<li>Users can update themselves, but only their own birthday</li>
+<li>Admins can create, update, replace, or delete any user</li>
+</ul>
+<pre><code class="lang-js"><span class="token keyword">var</span> userSchema <span class="token operator">=</span> <span class="token punctuation">{</span>
+  document<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    read<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;public&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    create<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;admin&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    update<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;admin&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;self&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    replace<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;admin&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token keyword">delete</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;admin&apos;</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  read<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    id<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;public&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    name<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;public&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    birthday<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;admin&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;self&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    times<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      created<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;admin&apos;</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  write<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    id<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;admin&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    name<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;admin&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    birthday<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;admin&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;self&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    times<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      created<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;admin&apos;</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>If you don&apos;t define a category or a rule for a field or type, the default is to deny access.</p>
+<h2 id="plugging-it-in"><a name="plugging-it-in" class="plugin-anchor" href="#plugging-it-in"><span class="fa fa-link"></span></a>Plugging it in</h2>
+<p>To add the security functionality to a <a href="http://thinky.io" target="_blank">Thinky</a> model, pass the palisade function the model and your security schema.</p>
+<p>This does a few things:</p>
+<ul>
+<li>Adds a <a href="Screen.html">.screen()</a> function to the Model class and all Model instances</li>
+<li>Adds a <a href="Authorized.html">.authorized()</a> function to the Model class and all Model instances</li>
+<li>Adds your security ruleset as a <code>.security</code> property on the Model class<ul>
+<li>This makes it easy for models to extend eachother&apos;s security rules</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-js"><span class="token keyword">import</span> db from <span class="token string">&apos;connections/thinky&apos;</span>
+<span class="token keyword">import</span> palisade from <span class="token string">&apos;palisade&apos;</span>
+
+<span class="token keyword">const</span> User <span class="token operator">=</span> db<span class="token punctuation">.</span><span class="token function">createModel</span><span class="token punctuation">(</span><span class="token string">&apos;User&apos;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  id<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
+  name<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
+  birthday<span class="token punctuation">:</span> Date<span class="token punctuation">,</span>
+  times<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    created<span class="token punctuation">:</span> Date
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token function">palisade</span><span class="token punctuation">(</span>User<span class="token punctuation">,</span> userSchema<span class="token punctuation">)</span>
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../docs/Roles.html" class="navigation navigation-next " aria-label="Next page: User Roles"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-edit-link/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-github/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-collapsible-menu/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"edit-link":{"base":"https://github.com/shastajs/palisade/tree/master","label":"Edit This Page"},"github":{"url":"https://github.com/shastajs/palisade/"}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
