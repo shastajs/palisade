@@ -130,6 +130,44 @@ describe('Model.authorized', () => {
       roles: [ 'pleb', 'admin' ]
     }).should.equal(true)
   })
+  it('should return true if user roles attr fn matches', () => {
+    const isAdmin = ({ user, data }) => {
+      should.exist(user)
+      should.exist(user.roles)
+      should.exist(data)
+      data.id.should.equal(123)
+      return true
+    }
+    let rules = {
+      document: {
+        read: [ isAdmin, 'super' ]
+      }
+    }
+    let User = createUser()
+    palisade(User, rules)
+    User.authorized('read', {
+      roles: [ 'pleb' ]
+    }, { id: 123 }).should.equal(true)
+  })
+  it('should return true if user roles attr fn doesnt match', () => {
+    const isAdmin = ({ user, data }) => {
+      should.exist(user)
+      should.exist(user.roles)
+      should.exist(data)
+      data.id.should.equal(123)
+      return false
+    }
+    let rules = {
+      document: {
+        read: [ isAdmin, 'super' ]
+      }
+    }
+    let User = createUser()
+    palisade(User, rules)
+    User.authorized('read', {
+      roles: [ 'pleb' ]
+    }, { id: 123 }).should.equal(false)
+  })
   it('should return true if self role matches', () => {
     let rules = {
       document: {
@@ -286,6 +324,36 @@ describe('Model.screen', () => {
       read: {
         attributes: {
           name: [ 'root', 'super' ]
+        }
+      }
+    }
+    let User = createUser()
+    let u1 = { roles: [ 'admin', 'pleb' ] }
+    let o = { attributes: { name: 'test' } }
+    palisade(User, rules)
+    User.screen('read', u1, o).should.eql({ attributes: {} })
+  })
+  it('should return nested data if user roles attr fn matches', () => {
+    const yo = () => true
+    let rules = {
+      read: {
+        attributes: {
+          name: [ yo, 'root', 'super' ]
+        }
+      }
+    }
+    let User = createUser()
+    let u1 = { roles: [ 'admin', 'pleb' ] }
+    let o = { attributes: { name: 'test' } }
+    palisade(User, rules)
+    User.screen('read', u1, o).should.eql({ attributes: { name: 'test' } })
+  })
+  it('should return empty nested data if user roles attr fn doesnt match', () => {
+    const yo = () => false
+    let rules = {
+      read: {
+        attributes: {
+          name: [ yo ]
         }
       }
     }

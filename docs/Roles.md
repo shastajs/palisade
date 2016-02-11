@@ -10,8 +10,13 @@
 
 ## Other Roles
 
-- If a user has a `role` attribute that is a string, it will be included
-- If a user has a `roles` attribute that is an array of strings, they will be included
+- If a user has a `role` attribute, it will be included
+  - This can either be a string, or a function that returns a boolean
+  - Any functions given will receive an object as the sole argument, which contains `user`, `data`, and `roles` keys
+- If a user has a `roles` attribute, it will be included
+  - Expects either an array of strings, or functions that returns a boolean
+    - (or any combination of the two!)
+  - Any functions given will receive an object as the sole argument, which contains `user`, `data`, and `roles` keys
 
 ## Naming Roles
 
