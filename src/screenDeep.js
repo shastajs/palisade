@@ -1,8 +1,11 @@
 import reduce from 'lodash.reduce'
 import isObject from 'lodash.isobject'
 import isArray from 'lodash.isarray'
+import isDate from 'lodash.isdate'
 
 const screenDeep = (user, data, returnEmpty) => {
+  if (isDate(data)) return data.toISOString()
+
   // check if the user can even see the doc
   if (isObject(data) && !isArray(data)) {
     if (data.authorized &&

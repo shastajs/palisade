@@ -451,6 +451,7 @@ describe('screenDeep', () => {
       },
       read: {
         id: [ 'public' ],
+        time: [ 'public' ],
         name: [ 'self' ]
       }
     })
@@ -460,8 +461,13 @@ describe('screenDeep', () => {
     })
     let u2 = {
       id: '456',
+      bday: new Date('2016-02-14T23:31:46.733Z'),
       name: 'test2'
     }
-    screenDeep(u1, u2).should.eql({ id: '456', name: 'test2' })
+    screenDeep(u1, u2).should.eql({
+      id: '456',
+      name: 'test2',
+      bday: '2016-02-14T23:31:46.733Z'
+    })
   })
 })
