@@ -46,6 +46,8 @@ var screenDeep = function screenDeep(user, data, returnEmpty) {
       return p;
     }, []);
   }
+
+  return data;
 };
 
 exports.default = screenDeep;
