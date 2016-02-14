@@ -16,9 +16,15 @@ var _lodash5 = require('lodash.isarray');
 
 var _lodash6 = _interopRequireDefault(_lodash5);
 
+var _lodash7 = require('lodash.isdate');
+
+var _lodash8 = _interopRequireDefault(_lodash7);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var screenDeep = function screenDeep(user, data, returnEmpty) {
+  if ((0, _lodash8.default)(data)) return data.toISOString();
+
   // check if the user can even see the doc
   if ((0, _lodash4.default)(data) && !(0, _lodash6.default)(data)) {
     if (data.authorized && !data.authorized('read', user)) {
