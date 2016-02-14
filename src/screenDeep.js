@@ -31,6 +31,8 @@ const screenDeep = (user, data, returnEmpty) => {
       return p
     }, [])
   }
+
+  return data
 }
 
 export default screenDeep

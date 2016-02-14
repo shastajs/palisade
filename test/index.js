@@ -443,4 +443,25 @@ describe('screenDeep', () => {
     })
     screenDeep(u1, u2).should.eql({ id: '456' })
   })
+  it('should return generic data', () => {
+    let User = createUser()
+    palisade(User, {
+      document: {
+        read: [ 'public' ]
+      },
+      read: {
+        id: [ 'public' ],
+        name: [ 'self' ]
+      }
+    })
+    let u1 = new User({
+      id: '123',
+      name: 'test1'
+    })
+    let u2 = {
+      id: '456',
+      name: 'test2'
+    }
+    screenDeep(u1, u2).should.eql({ id: '456', name: 'test2' })
+  })
 })
