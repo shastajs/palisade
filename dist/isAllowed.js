@@ -4,13 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _lodash = require('lodash.isarray');
+var _lodash = require('lodash.some');
 
 var _lodash2 = _interopRequireDefault(_lodash);
-
-var _lodash3 = require('lodash.some');
-
-var _lodash4 = _interopRequireDefault(_lodash3);
 
 var _getRoles = require('./getRoles');
 
@@ -19,7 +15,7 @@ var _getRoles2 = _interopRequireDefault(_getRoles);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (rules, user, data) {
-  if (!(0, _lodash2.default)(rules) && typeof rules !== 'function') return false;
+  if (!Array.isArray(rules) && typeof rules !== 'function') return false;
   var roles = (0, _getRoles2.default)(user, data);
   var fnOpt = {
     user: user,
@@ -33,7 +29,7 @@ exports.default = function (rules, user, data) {
   }
 
   // auth is an array of strings or fns
-  return (0, _lodash4.default)(rules, function (v) {
+  return (0, _lodash2.default)(rules, function (v) {
     if (typeof v === 'function') return v(fnOpt);
     if (typeof v === 'string') return roles.indexOf(v) !== -1;
     return false;
