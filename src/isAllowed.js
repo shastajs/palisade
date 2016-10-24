@@ -1,9 +1,8 @@
-import isArray from 'lodash.isarray'
 import some from 'lodash.some'
 import getRoles from './getRoles'
 
 export default (rules, user, data) => {
-  if (!isArray(rules) && typeof rules !== 'function') return false
+  if (!Array.isArray(rules) && typeof rules !== 'function') return false
   const roles = getRoles(user, data)
   const fnOpt = {
     user: user,

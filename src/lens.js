@@ -1,18 +1,17 @@
-import isArray from 'lodash.isarray'
-import isObject from 'lodash.isobject'
 import reduce from 'lodash.reduce'
 import isDate from 'lodash.isdate'
 import isAllowed from './isAllowed'
 
 const filterWithLens = (schema, user, data) => {
-  if (!isObject(data)) return
+  if (typeof data !== 'object') return
   if (isDate(data)) return data.toISOString()
   return reduce(data, (o, v, k) => {
+    if (!data.hasOwnProperty(k)) return
     const rules = schema[k]
-    const needsNesting =  isObject(rules) && !isArray(rules)
+    const needsNesting =  typeof rules === 'object' && !Array.isArray(rules)
 
     if (needsNesting) {
-      if (isObject(v)) {
+      if (typeof v === 'object') {
         o[k] = filterWithLens(rules, user, v)
       }
     } else if (isAllowed(rules, user, data)) {
